@@ -61,7 +61,7 @@ shinyUI(navbarPage("Googly : yorkr analyzes IPL!",
                                 
                             ),
                             mainPanel(
-                                verbatimTextOutput("Plotorprint"),
+                                uiOutput("plotOrPrint"),
                                 #uiOutput('Plotorprint'),
                                 column(7, offset=4,
                                        tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),

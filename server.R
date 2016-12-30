@@ -38,21 +38,30 @@ shinyServer(function(input, output,session) {
         
     })
     
-    
-    output$Plotorprint <-  renderPrint({ 
-    #output$Plotorprint <-  renderUI({  
-        a <- printOrPlot(input, output,teams, otherTeam)
-        a
-        #plotOutput("Q")
-        #verbatimTextOutput(a)
+    output$IPLMatchPlot <- renderPlot({ 
         
-        #if (is.data.frame(printOrPlot(input, output,teams, otherTeam))) { # Check if output of f(x) is data.frame
-            #verbatimTextOutput(a) # If so, create a print
-        #} 
-        #else {                      # If not,
-           # plotOutput("Q") # create a plot
-        #}
-        #a
+         print("1243")
+         printOrPlot(input, output,teams, otherTeam)
+       
+     
+    })
+    output$IPLMatchPrint <- renderPrint({ 
+        
+        a <- printOrPlot(input, output,teams, otherTeam)
+        a 
+        #print(scorecard)
+        
+        
+    })
+    output$plotOrPrint <-  renderUI({ 
+    #output$Plotorprint <-  renderUI({  
+        if(is.data.frame(scorecard <- printOrPlot(input, output,teams, otherTeam))){
+            verbatimTextOutput("IPLMatchPrint")
+        }
+        else{
+            plotOutput("IPLMatchPlot")
+        }
+      
     })
    
     # Analyze Head to head confrontation of IPL teams

@@ -15,5 +15,7 @@ printOrPlot <- function(input,output,teams,otherTeam){
     otherTeam = setdiff(teams,input$team)
     #print(otherTeam)
     a <- analyzeIPLMatches(input$match,input$matchFunc,input$team,otherTeam)
+    #print("Hi")
+    #print(a)
     a
 }
