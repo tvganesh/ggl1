@@ -44,13 +44,14 @@ IPLMatchFuncs <- c("Match Batting Scorecard",
 
 
 # Functions to analyze IPL matches
-IPLMatches2TeamsFuncs <- c("Team Batsmen Batting Partnerships All Matches",
-                   "Team Batsmen vs Bowlers all Matches",
-                   "Team Wickets Opposition All Matches",
-                   "Team Bowler vs Batsmen All Matches",
-                   "Team Bowlers Wicket Kind All Matches",
-                   "Team Bowler Wicket Runs All Matches",
-                   "Win Loss All Matches")
+IPLMatches2TeamsFuncs <- c("Team Batting Scorecard All Matches",
+                           "Team Batsmen Batting Partnerships All Matches",
+                            "Team Batsmen vs Bowlers all Matches",
+                            "Team Wickets Opposition All Matches",
+                            "Team Bowler vs Batsmen All Matches",
+                            "Team Bowlers Wicket Kind All Matches",
+                            "Team Bowler Wicket Runs All Matches",
+                            "Win Loss All Matches")
 
 # Functions to analyze IPL teams' overall performance
 IPLTeamOverallPerfFunc <- c("Team Batsmen Partnerships Overall",

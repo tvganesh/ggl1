@@ -8,7 +8,7 @@
 #
 #########################################################################################################
 #Analyze all IPL matches between 2 IPL teams
-analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1, team,opposition) {
+analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1,repType, team,opposition) {
     
     # Check and get the team indices of IPL teams in which the bowler has played
 
@@ -22,12 +22,26 @@ analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1, team,oppositi
         val1= FALSE
     }
     
+    if(repType == 1){
+        val2=TRUE
+    } else {
+        val2= FALSE
+    }
+    
     # Call the correct function
     if(matchFunc == "Team Batting Scorecard All Matches"){
         
-        teamBattingScorecardOppnAllMatches(matchesDF,team)
+        teamBattingScorecardOppnAllMatches(matchesDF,team, opposition)
     } else if (matchFunc == "Team Batsmen Batting Partnerships All Matches"){
-        teamBatsmenPartnershipOppnAllMatchesChart(matchesDF,team,opposition,plot=val1)
+        if(val1 == TRUE){
+            teamBatsmenPartnershipOppnAllMatchesChart(matchesDF,team,opposition,plot=val1)
+        } else if(val1 == FALSE){
+            if(val2 ==TRUE){
+                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=val2)
+            } else if(val2 ==FALSE){
+                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=val2)
+            }
+        }
     } else if (matchFunc == "Team Batsmen vs Bowlers all Matches"){
         teamBatsmenVsBowlersOppnAllMatches(matchesDF,team,opposition,plot=val1)
     }  else if (matchFunc == "Team Bowling Performance All Matches"){

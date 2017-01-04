@@ -73,15 +73,15 @@ shinyServer(function(input, output,session) {
     })
     
     # Analyze and display IPL Match table
-    output$IPLMatch2TeamsPrint <- renderPrint({ 
+    output$IPLMatch2TeamsPrint <- renderTable({ 
         a <- printOrPlotIPLMatch2Teams(input, output)
-        head(a,n=50)
+        head(a,n=20)
         #a
     })
     output$plotOrPrintIPLMatch2teams <-  renderUI({ 
         # Check if output is a dataframe. If so, print
         if(is.data.frame(scorecard <- printOrPlotIPLMatch2Teams(input, output))){
-            verbatimTextOutput("IPLMatch2TeamsPrint")
+            tableOutput("IPLMatch2TeamsPrint")
         }
         else{ #Else plot
             plotOutput("IPLMatch2TeamsPlot")
