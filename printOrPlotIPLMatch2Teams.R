@@ -7,15 +7,10 @@ printOrPlotIPLMatch2Teams <- function(input,output){
     output$selectTeam2 <- renderUI({ 
         selectInput('team2', 'Choose team',choices=teams2,selected=input$team2)
     })
-    output$repType <- renderUI({ 
-        options <- c("Summary", "Detailed")
-        # The options are dynamically generated on the server
-        radioButtons('DetailedorSummary', 'Report Type', options, selected = options[1],inline=T)
-        
-    })
+    
     #Find the other team
     otherTeam = setdiff(teams2,input$team2)
     a <- analyzeIPLMatches2Teams(input$match2,input$matches2TeamFunc,input$plotOrTable1,
-                                 input$DetailedorSummary,input$team2,otherTeam)
+                                 input$repType,input$team2,otherTeam)
     a
 }

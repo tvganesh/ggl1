@@ -24,9 +24,9 @@ analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1,repType, team,
     
     print(repType)
     if(repType == 1){
-        val2=TRUE
+        val2="summary"
     } else {
-        val2= FALSE
+        val2= "detailed"
     }
     
     # Call the correct function
@@ -37,10 +37,10 @@ analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1,repType, team,
         if(val1 == TRUE){
             teamBatsmenPartnershipOppnAllMatchesChart(matchesDF,team,opposition,plot=val1)
         } else if(val1 == FALSE){
-            if(val2 ==TRUE){
-                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=repType)
-            } else if(val2 ==FALSE){
-                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=repType)
+            if(repType ==1){
+                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report="summary")
+            } else if(repType ==2){
+                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report="detailed")
             }
         }
     } else if (matchFunc == "Team Batsmen vs Bowlers all Matches"){

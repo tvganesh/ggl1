@@ -83,7 +83,9 @@ shinyUI(navbarPage("Googly : yorkr analyzes IPL!",
                                 radioButtons("plotOrTable1", label = h4("Plot or table"),
                                              choices = c("Plot" = 1, "Table" = 2), 
                                              selected = 1,inline=T),
-                                uiOutput("repType")
+                                radioButtons("repType", label = h4("Report Type"),
+                                             choices = c("Summary" = 1, "Detailed" = 2), 
+                                             selected = 1,inline=T)
                                 
                             ),
                             mainPanel(

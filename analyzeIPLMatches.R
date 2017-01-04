@@ -29,7 +29,7 @@ analyzeIPLMatches <- function(match,matchFunc,plotOrTable,team,opposition) {
         teamBatsmenPartnershipMatch(matchDF,team,opposition,plot=val)
     } else if (matchFunc == "Batsmen vs Bowlers"){
         teamBatsmenVsBowlersMatch(matchDF,team,opposition,plot=val)
-    }  else if (matchFunc == "Bowling Scorecard"){
+    }  else if (matchFunc == "Match Bowling Scorecard"){
         teamBowlingScorecardMatch(matchDF,team)    
     } else if (matchFunc == "Bowling Wicket Kind"){
         teamBowlingWicketKindMatch(matchDF,team,opposition, plot=val)
