@@ -1,4 +1,4 @@
-printOrPlot <- function(input,output,teams,otherTeam){
+printOrPlotIPLMatch <- function(input,output,teams,otherTeam){
     m <- strsplit(as.character(input$match),"-")
     print(m[[1]][1])
     print(m[[1]][2])

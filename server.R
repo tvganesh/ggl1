@@ -23,7 +23,7 @@ source("analyzeIPLBowlers.R")
 source("analyzeIPLMatches.R")
 source("analyzeIPLMatches2Teams.R")
 source("analyzeIPLTeamPerfOverall.R")
-source("printOrPlot.R")
+source("printOrPlotIPLMatch.R")
 shinyServer(function(input, output,session) {
     
     # Analyze and display batsmen plots
@@ -39,23 +39,18 @@ shinyServer(function(input, output,session) {
     })
     
     output$IPLMatchPlot <- renderPlot({ 
-        
-         print("1243")
-         printOrPlot(input, output,teams, otherTeam)
-       
+        printOrPlotIPLMatch(input, output)
      
     })
     output$IPLMatchPrint <- renderPrint({ 
-        
-        a <- printOrPlot(input, output,teams, otherTeam)
+        a <- printOrPlotIPLMatch(input, output)
         a 
         #print(scorecard)
         
         
     })
     output$plotOrPrint <-  renderUI({ 
-    #output$Plotorprint <-  renderUI({  
-        if(is.data.frame(scorecard <- printOrPlot(input, output,teams, otherTeam))){
+        if(is.data.frame(scorecard <- printOrPlotIPLMatch(input, output))){
             verbatimTextOutput("IPLMatchPrint")
         }
         else{
