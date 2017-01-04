@@ -22,6 +22,7 @@ analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1,repType, team,
         val1= FALSE
     }
     
+    print(repType)
     if(repType == 1){
         val2=TRUE
     } else {
@@ -37,9 +38,9 @@ analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1,repType, team,
             teamBatsmenPartnershipOppnAllMatchesChart(matchesDF,team,opposition,plot=val1)
         } else if(val1 == FALSE){
             if(val2 ==TRUE){
-                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=val2)
+                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=repType)
             } else if(val2 ==FALSE){
-                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=val2)
+                teamBatsmenPartnershiOppnAllMatches(matchesDF,team,report=repType)
             }
         }
     } else if (matchFunc == "Team Batsmen vs Bowlers all Matches"){
