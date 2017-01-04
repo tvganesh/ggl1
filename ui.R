@@ -64,8 +64,7 @@ shinyUI(navbarPage("Googly : yorkr analyzes IPL!",
                                 
                             ),
                             mainPanel(
-                                uiOutput("plotOrPrint"),
-                                #uiOutput('Plotorprint'),
+                                uiOutput("plotOrPrintIPLMatch"),
                                 column(7, offset=4,
                                        tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
                                        tags$h5((tags$i("Dec 25,2016"))),
@@ -79,11 +78,16 @@ shinyUI(navbarPage("Googly : yorkr analyzes IPL!",
                             headerPanel('Head-to-head between 2 IPL teams'),
                             sidebarPanel(
                                 selectInput('matches2TeamFunc', 'Select function', IPLMatches2TeamsFuncs),
-                                selectInput('match2', 'Select matches', IPLMatches2Teams,selectize=FALSE, size=20),                                uiOutput("selectTeam2")
+                                selectInput('match2', 'Select matches', IPLMatches2Teams,selectize=FALSE, size=20),                                
+                                uiOutput("selectTeam2"),
+                                radioButtons("plotOrTable1", label = h4("Plot or table"),
+                                             choices = c("Plot" = 1, "Table" = 2), 
+                                             selected = 1,inline=T),
+                                uiOutput("selectRepType")
                                 
                             ),
                             mainPanel(
-                                plotOutput('IPLMatch2TeamsPlot'),
+                                uiOutput("plotOrPrintIPLMatch2teams"),
                                 column(7, offset=4,
                                        tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
                                        tags$h5((tags$i("Dec 25,2016"))),

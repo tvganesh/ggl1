@@ -24,6 +24,7 @@ source("analyzeIPLMatches.R")
 source("analyzeIPLMatches2Teams.R")
 source("analyzeIPLTeamPerfOverall.R")
 source("printOrPlotIPLMatch.R")
+source('printOrPlotIPLMatch2Teams.R')
 shinyServer(function(input, output,session) {
     
     # Analyze and display batsmen plots
@@ -38,42 +39,59 @@ shinyServer(function(input, output,session) {
         
     })
     
+    ######################################## IPL Match  #############################################
+    # Analyze and display IPL Match plot
     output$IPLMatchPlot <- renderPlot({ 
         printOrPlotIPLMatch(input, output)
      
     })
+    
+    # Analyze and display IPL Match table
     output$IPLMatchPrint <- renderPrint({ 
         a <- printOrPlotIPLMatch(input, output)
         a 
-        #print(scorecard)
-        
         
     })
-    output$plotOrPrint <-  renderUI({ 
+    output$plotOrPrintIPLMatch <-  renderUI({ 
+        # Check if output is a dataframe. If so, print
         if(is.data.frame(scorecard <- printOrPlotIPLMatch(input, output))){
             verbatimTextOutput("IPLMatchPrint")
         }
-        else{
+        else{ #Else plot
             plotOutput("IPLMatchPlot")
         }
       
     })
    
+    #################################### IPL Matches between 2 teams
     # Analyze Head to head confrontation of IPL teams
-    output$IPLMatch2TeamsPlot <- renderPlot({  
-        # Get the IPL teams
-        p <- strsplit(as.character(input$match2),"-")
-        teams2 <- c(p[[1]][1],p[[1]][2])
-        #print(teams2)
-        # Set the IPL teams
-        output$selectTeam2 <- renderUI({ 
-            selectInput('team2', 'Choose team',choices=teams2,selected=input$team2)
-        })
-        #Find the other team
-        otherTeam = setdiff(teams2,input$team2)
-        analyzeIPLMatches2Teams(input$match2,input$matches2TeamFunc,input$team2,otherTeam)
+    
+    # Analyze and display IPL Matches between 2 teams plot
+    output$IPLMatch2TeamsPlot <- renderPlot({ 
+        printOrPlotIPLMatch2Teams(input, output)
         
     })
+    
+    # Analyze and display IPL Match table
+    output$IPLMatch2TeamsPrint <- renderPrint({ 
+        a <- printOrPlotIPLMatch2Teams(input, output)
+        head(a,n=50)
+        #a
+    })
+    output$plotOrPrintIPLMatch2teams <-  renderUI({ 
+        # Check if output is a dataframe. If so, print
+        if(is.data.frame(scorecard <- printOrPlotIPLMatch2Teams(input, output))){
+            verbatimTextOutput("IPLMatch2TeamsPrint")
+        }
+        else{ #Else plot
+            plotOutput("IPLMatch2TeamsPlot")
+        }
+        
+    })
+    
+
+    
+    ################################ IPL Teams's overall performance ##############################
     # Analyze overall IPL team performance plots
     output$IPLTeamPerfOverall <- renderPlot({  
         # Set the rank of player

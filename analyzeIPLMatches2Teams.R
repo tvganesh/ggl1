@@ -8,30 +8,38 @@
 #
 #########################################################################################################
 #Analyze all IPL matches between 2 IPL teams
-analyzeIPLMatches2Teams <- function(match2,matchFunc,team,opposition) {
+analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1, team,opposition) {
     
     # Check and get the team indices of IPL teams in which the bowler has played
 
     IPLmatch <- paste("./IPLMatches2Teams/", match2,".RData",sep="")
     load(IPLmatch)
     matchesDF <- matches
+    
+    if(plotOrTable1 == 1){
+        val1=TRUE
+    } else {
+        val1= FALSE
+    }
+    
     # Call the correct function
     if(matchFunc == "Team Batting Scorecard All Matches"){
+        
         teamBattingScorecardOppnAllMatches(matchesDF,team)
     } else if (matchFunc == "Team Batsmen Batting Partnerships All Matches"){
-        teamBatsmenPartnershipOppnAllMatchesChart(matchesDF,team,opposition)
+        teamBatsmenPartnershipOppnAllMatchesChart(matchesDF,team,opposition,plot=val1)
     } else if (matchFunc == "Team Batsmen vs Bowlers all Matches"){
-        teamBatsmenVsBowlersOppnAllMatches(matchesDF,team,opposition)
+        teamBatsmenVsBowlersOppnAllMatches(matchesDF,team,opposition,plot=val1)
     }  else if (matchFunc == "Team Bowling Performance All Matches"){
-        teamBowlingPerfOppnAllMatches(matchesDF,team)    
+        teamBowlingPerfOppnAllMatches(matchesDF,team.plot=val1)    
     } else if (matchFunc == "Team Wickets Opposition All Matches"){
-        teamBowlersWicketsOppnAllMatches(matchesDF,team,opposition)
+        teamBowlersWicketsOppnAllMatches(matchesDF,team,opposition,plot=val1)
     } else if (matchFunc == "Team Bowler vs Batsmen All Matches"){
-        teamBowlersVsBatsmenOppnAllMatches(matchesDF,team,opposition)
+        teamBowlersVsBatsmenOppnAllMatches(matchesDF,team,opposition,plot=val1)
     } else if (matchFunc == "Team Bowlers Wicket Kind All Matches"){
-        teamBowlersWicketKindOppnAllMatches(matchesDF,team,opposition)
+        teamBowlersWicketKindOppnAllMatches(matchesDF,team,opposition,plot=val1)
     } else if (matchFunc == "Team Bowler Wicket Runs All Matches"){
-        teamBowlersWicketRunsOppnAllMatches(matchesDF,team,opposition)
+        teamBowlersWicketRunsOppnAllMatches(matchesDF,team,opposition,plot=val1)
     } else if (matchFunc == "Win Loss All Matches"){
         plotWinLossBetweenTeams(team,opposition,"./IPLmatches")
     }

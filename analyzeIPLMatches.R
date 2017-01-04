@@ -21,7 +21,6 @@ analyzeIPLMatches <- function(match,matchFunc,plotOrTable,team,opposition) {
         val= FALSE
     }
     print(matchFunc)
-    print(dim(matchDF))
     print(team)
     # Call necessary function
     if(matchFunc == "Match Batting Scorecard"){
