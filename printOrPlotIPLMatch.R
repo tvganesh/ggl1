@@ -14,7 +14,7 @@ printOrPlotIPLMatch <- function(input,output,teams,otherTeam){
     # Find the opposition IPL team
     otherTeam = setdiff(teams,input$team)
     #print(otherTeam)
-    a <- analyzeIPLMatches(input$match,input$matchFunc,input$team,otherTeam)
+    a <- analyzeIPLMatches(input$match,input$matchFunc,input$plotOrTable,input$team,otherTeam)
     #print("Hi")
     #print(a)
     a

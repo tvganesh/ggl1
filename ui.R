@@ -58,7 +58,7 @@ shinyUI(navbarPage("Googly : yorkr analyzes IPL!",
                                 selectInput('matchFunc', 'Select match function', IPLMatchFuncs),
                                 selectInput('match', 'Select IPL match ', IPLMatches,selectize=FALSE, size=20),
                                 uiOutput("selectTeam"),
-                                radioButtons("plotTable", label = h4("Plot or table"),
+                                radioButtons("plotOrTable", label = h4("Plot or table"),
                                              choices = c("Plot" = 1, "Table" = 2), 
                                              selected = 1,inline=T)
                                 
