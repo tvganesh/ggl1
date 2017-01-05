@@ -48,13 +48,15 @@ analyzeIPLTeamPerfOverall <- function(matches,matchFunc,team,rankV,plotOrTable2,
         }
         
     } else if(matchFunc == "Team Bowling Scorecard Overall"){
-        print("Hello")
-        print(team)
         teamBowlingScorecardAllOppnAllMatchesMain(matchesDF,theTeam=team)
         
     } else if (matchFunc == "Team Bowler vs Batsmen Overall"){
-        df <- teamBowlersVsBatsmenAllOppnAllMatchesRept(matchesDF,team,rank=as.integer(rankV))  
-        teamBowlersVsBatsmenAllOppnAllMatchesPlot(df,team,team)
+        if(val3 == TRUE){
+           df <- teamBowlersVsBatsmenAllOppnAllMatchesRept(matchesDF,team,rank=as.integer(rankV))  
+           teamBowlersVsBatsmenAllOppnAllMatchesPlot(df,team,team)
+        } else {
+            teamBowlersVsBatsmenAllOppnAllMatchesRept(matchesDF,team,rank=as.integer(rankV))  
+        }
         
   
     } else if (matchFunc == "Team Bowler Wicket Kind Overall"){

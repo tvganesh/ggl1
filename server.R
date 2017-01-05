@@ -53,6 +53,7 @@ shinyServer(function(input, output,session) {
         a 
         
     })
+    # Output either a table or a plot 
     output$plotOrPrintIPLMatch <-  renderUI({ 
         # Check if output is a dataframe. If so, print
         if(is.data.frame(scorecard <- printOrPlotIPLMatch(input, output))){
@@ -64,7 +65,7 @@ shinyServer(function(input, output,session) {
       
     })
    
-    #################################### IPL Matches between 2 teams
+    #################################### IPL Matches between 2 teams ######################
     # Analyze Head to head confrontation of IPL teams
     
     # Analyze and display IPL Matches between 2 teams plot
@@ -79,6 +80,7 @@ shinyServer(function(input, output,session) {
         a
         #a
     })
+    # Output either a table or a plot 
     output$plotOrPrintIPLMatch2teams <-  renderUI({ 
         # Check if output is a dataframe. If so, print
         if(is.data.frame(scorecard <- printOrPlotIPLMatch2Teams(input, output))){
@@ -94,7 +96,6 @@ shinyServer(function(input, output,session) {
     
     ################################ IPL Teams's overall performance ##############################
     # Analyze overall IPL team performance plots
-  
     output$IPLTeamPerfOverallPlot <- renderPlot({ 
         printOrPlotIPLTeamPerfOverall(input, output)
         
@@ -106,6 +107,7 @@ shinyServer(function(input, output,session) {
         a
         
     })
+    # Output either a table or a plot 
     output$printOrPlotIPLTeamPerfoverall <-  renderUI({ 
         # Check if output is a dataframe. If so, print
         if(is.data.frame(scorecard <- printOrPlotIPLTeamPerfOverall(input, output))){
@@ -115,8 +117,5 @@ shinyServer(function(input, output,session) {
             plotOutput("IPLTeamPerfOverallPlot")
         }
     })   
-        
-    
-        
-    
+
 })

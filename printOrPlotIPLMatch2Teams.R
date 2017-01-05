@@ -1,3 +1,11 @@
+# ############################################################################################333333
+# Title :  Googly - An interactive app to analyze IPL Players, teams and matches 
+# Designed and developed by: Tinniam V Ganesh
+# Date : 5 Jan 2016
+# File: printOrPlotIPLMatch2Teams
+# More details: https://gigadom.wordpress.com/
+#
+#########################################################################################################
 printOrPlotIPLMatch2Teams <- function(input,output){
     # Get the IPL teams
     p <- strsplit(as.character(input$match2),"-")
