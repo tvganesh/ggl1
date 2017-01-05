@@ -9,7 +9,9 @@ printOrPlotIPLTeamPerfOverall <- function(input,output){
     n <- strsplit(as.character(input$teamMatches),"-")
     #print(n[[1]][2])
     
-    analyzeIPLTeamPerfOverall(input$teamMatches,input$overallperfFunc,n[[1]][2],input$rank)
+    analyzeIPLTeamPerfOverall(input$teamMatches,input$overallperfFunc,n[[1]][2],input$rank,
+                              input$plotOrTable2,
+                              input$repType2)
     
 
 

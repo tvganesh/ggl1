@@ -1,8 +1,5 @@
 printOrPlotIPLMatch <- function(input,output){
     m <- strsplit(as.character(input$match),"-")
-    #print(m[[1]][1])
-    #print(m[[1]][2])
-    
     teams <- c(m[[1]][1],m[[1]][2])
   
     

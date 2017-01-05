@@ -104,7 +104,13 @@ shinyUI(navbarPage("Googly : yorkr analyzes IPL!",
                             sidebarPanel(
                                 selectInput('overallperfFunc', 'Select function', IPLTeamOverallPerfFunc),
                                 selectInput('teamMatches', 'Select the team', IPLTeamsAll,selectize=FALSE, size=13),
-                                uiOutput("Rank")
+                                uiOutput("Rank"),
+                                radioButtons("plotOrTable2", label = h4("Plot or table"),
+                                             choices = c("Plot" = 1, "Table" = 2), 
+                                             selected = 1,inline=T),
+                                radioButtons("repType2", label = h4("Report Type"),
+                                             choices = c("Summary" = 1, "Detailed" = 2), 
+                                             selected = 1,inline=T)
                             ),
                             mainPanel(
                                 uiOutput('printOrPlotIPLTeamPerfoverall'),

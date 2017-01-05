@@ -45,8 +45,8 @@ analyzeIPLMatches2Teams <- function(match2,matchFunc,plotOrTable1,repType, team,
         }
     } else if (matchFunc == "Team Batsmen vs Bowlers all Matches"){
         teamBatsmenVsBowlersOppnAllMatches(matchesDF,team,opposition,plot=val1)
-    }  else if (matchFunc == "Team Bowling Performance All Matches"){
-        teamBowlingPerfOppnAllMatches(matchesDF,team.plot=val1)    
+    }  else if (matchFunc == "Team Bowling Scorecard All Matches"){
+        teamBowlingPerfOppnAllMatches(matchesDF,team, opposition)    
     } else if (matchFunc == "Team Wickets Opposition All Matches"){
         teamBowlersWicketsOppnAllMatches(matchesDF,team,opposition,plot=val1)
     } else if (matchFunc == "Team Bowler vs Batsmen All Matches"){
