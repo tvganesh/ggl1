@@ -25,6 +25,7 @@ source("analyzeIPLMatches2Teams.R")
 source("analyzeIPLTeamPerfOverall.R")
 source("printOrPlotIPLMatch.R")
 source('printOrPlotIPLMatch2Teams.R')
+source('printOrPlotIPLTeamPerfOverall.R')
 shinyServer(function(input, output,session) {
     
     # Analyze and display batsmen plots
@@ -93,20 +94,29 @@ shinyServer(function(input, output,session) {
     
     ################################ IPL Teams's overall performance ##############################
     # Analyze overall IPL team performance plots
-    output$IPLTeamPerfOverall <- renderPlot({  
-        # Set the rank of player
-        rankValues <- c(1,2,3,4,5,6)
-        output$Rank = renderUI({
-            selectInput('rank', 'Choose the rank',choices=rankValues,selected=input$rank)
-        })
-        
-        print(input$teamMatches)
-        n <- strsplit(as.character(input$teamMatches),"-")
-        #print(n[[1]][2])
-        
-        analyzeIPLTeamPerfOverall(input$teamMatches,input$overallperfFunc,n[[1]][2],input$rank)
+  
+    output$IPLTeamPerfOverallPlot <- renderPlot({ 
+        printOrPlotIPLTeamPerfOverall(input, output)
         
     })
     
+    # Analyze and display IPL Match table
+    output$IPLTeamPerfOverallPrint <- renderTable({ 
+        a <- printOrPlotIPLTeamPerfOverall(input, output)
+        a
+        
+    })
+    output$printOrPlotIPLTeamPerfoverall <-  renderUI({ 
+        # Check if output is a dataframe. If so, print
+        if(is.data.frame(scorecard <- printOrPlotIPLTeamPerfOverall(input, output))){
+            tableOutput("IPLTeamPerfOverallPrint")
+        }
+        else{ #Else plot
+            plotOutput("IPLTeamPerfOverallPlot")
+        }
+    })   
+        
+    
+        
     
 })

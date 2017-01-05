@@ -107,7 +107,7 @@ shinyUI(navbarPage("Googly : yorkr analyzes IPL!",
                                 uiOutput("Rank")
                             ),
                             mainPanel(
-                                plotOutput('IPLTeamPerfOverall'),
+                                uiOutput('printOrPlotIPLTeamPerfoverall'),
                                 column(7, offset=4,
                                        tags$h5((tags$i("Designed and developed by Tinniam V Ganesh"))),
                                        tags$h5((tags$i("Dec 25,2016"))),
