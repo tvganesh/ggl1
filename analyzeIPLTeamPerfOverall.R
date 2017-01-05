@@ -25,7 +25,10 @@ analyzeIPLTeamPerfOverall <- function(matches,matchFunc,team,rankV) {
         df <- teamBatsmenVsBowlersAllOppnAllMatchesRept(matchesDF,team,rank=as.integer(rankV),dispRows = 20)
         teamBatsmenVsBowlersAllOppnAllMatchesPlot(df)
         
-    }  else if (matchFunc == "Team Bowler vs Batsmen Overall"){
+    } else if(matchFunc == "Team Batting Scorecard Overall"){
+        teamBowlingScorecardAllOppnAllMatches(matchesDF,team)
+        
+    } else if (matchFunc == "Team Bowler vs Batsmen Overall"){
         df <- teamBowlersVsBatsmenAllOppnAllMatchesRept(matchesDF,team,rank=as.integer(rankV))  
         teamBowlersVsBatsmenAllOppnAllMatchesPlot(df,team,team)
         
